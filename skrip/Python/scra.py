@@ -1,4 +1,4 @@
-# Skrip Python untuk meng-crawl data dari Web weddingku.com
+# Skrip Python untuk meng-crawl data tempat resepsi di Jakarta dari Web weddingku.com
 # pada tulisan "Tempat Resepsi Jakarta bagian 1: Pengumpulan dan Pemrosesan Awal"
 # oleh Ali, Maret 2015
 
