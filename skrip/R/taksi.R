@@ -1,3 +1,8 @@
+# Skrip R untuk membuat plot tarif taksi vs jarak
+# pada tulisan "Satu Lagi Tulisan Tentang Regresi"
+# oleh Okiriza, Mei 2015
+
+
 library(ggplot2)
 
 set.seed(100)
