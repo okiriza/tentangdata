@@ -1,3 +1,6 @@
+# Skrip untuk perbandingan operasi (perkalian matriks) dengan dan tanpa vektorisasi
+# oleh Okiriza, Juni 2015
+
 set.seed(100)
 
 nbaris <- 3
