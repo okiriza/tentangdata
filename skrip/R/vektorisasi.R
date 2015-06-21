@@ -8,8 +8,8 @@ nkolom <- 4
 mid_dim <- 2
 n_elem <- nbaris*nkolom
 
-M <- matrix(rnorm(n_elem), nrow=nbaris, ncol=mid_dim)
-N <- matrix(rnorm(n_elem), nrow=mid_dim, ncol=nkolom)
+M <- matrix(rnorm(nbaris*mid_dim), nrow=nbaris)
+N <- matrix(rnorm(mid_dim*nkolom), ncol=nkolom)
 
 # Versi 1: Dengan perulangan
 MN <- matrix(nrow=nbaris, ncol=nkolom)
@@ -27,4 +27,4 @@ for (i in 1:nbaris) {
 }
 
 # Versi 2: Dengan operasi built-in
-MN <- M %*% N
+MN_vec <- M %*% N
