@@ -9,6 +9,7 @@ source('helpers.R')
 
 user_col = 'blue'
 lse_col = 'green'
+line_cols = c('Your line' = user_col, 'LSE line' = lse_col)
 
 shinyServer(function(input, output, session) {
     clicks = reactiveValues(first = NULL, both = NULL)
@@ -129,7 +130,7 @@ shinyServer(function(input, output, session) {
         p
     })
 
-    plot_final = reactive({
+    plot_marks = reactive({
         p = plot_line()
         shown_line = input$rad_show_line
 
@@ -159,7 +160,31 @@ shinyServer(function(input, output, session) {
         p
     })
 
-    output$plot = renderPlot({plot_final()})
+    output$plot = renderPlot({plot_marks()})
+
+    output$user_intercept = renderText({
+        clb = clicks$both
+        if (is.null(clb)) {
+            ''
+        } else{
+            decimal(a_user(), 4)
+        }
+    })
+    output$lse_intercept = renderText({
+        decimal(a_lse(), 4)
+    })
+
+    output$user_slope = renderText({
+        clb = clicks$both
+        if (is.null(clb)) {
+            ''
+        } else{
+            decimal(b_user(), 4)
+        }
+    })
+    output$lse_slope = renderText({
+        decimal(b_lse(), 4)
+    })
 
     output$user_RMSE = renderText({
         clb = clicks$both
