@@ -18,9 +18,9 @@ shinyUI(fluidPage(
             sliderInput('num_randomness', 'Randomness', value = 20, min = 0, max = 100),
             sliderInput('sld_num_data', 'Number of data points', min = 2, max = 100, value = 50),
 
-            actionButton('btn_generate', 'Generate data', style='background-color: steelblue; color: white'),
+            actionButton('btn_generate', 'Generate new data', style='background-color: steelblue; color: white'),
 
-            hr(),
+            shiny::hr(),
 
             radioButtons('rad_show_line', 'Line to show', selected = 'draw', choices = list(
                 'None' = 'none',
@@ -32,10 +32,29 @@ shinyUI(fluidPage(
         ),
 
         mainPanel(
-            h3("Evaluation"),
+            h3("Results"),
+
             fluidRow(
                 column(2,
-                    h4("Metric", style = 'strong: FALSE'),
+                       h4("Coefficients"),
+                       h5(em(a("Intercept", href = "https://en.wikipedia.org/wiki/Y-intercept"))),
+                       h5(em(a("Slope", href = "https://en.wikipedia.org/wiki/Slope")))
+                ),
+
+                column(2,
+                       h4("Your line", style = "color: blue; text-decoration: underline"),
+                       h5(strong(textOutput("user_intercept"))),
+                       h5(strong(textOutput("user_slope")))
+                ),
+
+                column(2,
+                       h4("LSE line", style = "color: green; text-decoration: underline"),
+                       h5(textOutput("lse_intercept")),
+                       h5(textOutput("lse_slope"))
+                ),
+
+                column(2,
+                    h4("Eval Metrics"),
                     h5(em(a("RMSE", href = "https://en.wikipedia.org/wiki/Root-mean-square_deviation"))),
                     h5(em("RSE")),
                     h5(em(a("MAE", href = "https://en.wikipedia.org/wiki/Mean_absolute_error"))),
@@ -43,7 +62,7 @@ shinyUI(fluidPage(
                 ),
 
                 column(2,
-                    h4("Your line", style = "color: blue"),
+                    h4("Your line", style = "color: blue; text-decoration: underline"),
                     h5(strong(textOutput("user_RMSE"))),
                     h5(strong(textOutput("user_RSE"))),
                     h5(strong(textOutput("user_MAE"))),
@@ -51,7 +70,7 @@ shinyUI(fluidPage(
                 ),
 
                 column(2,
-                    h4("LSE line", style = "color: green"),
+                    h4("LSE line", style = "color: green; text-decoration: underline"),
                     h5(textOutput("lse_RMSE")),
                     h5(textOutput("lse_RSE")),
                     h5(textOutput("lse_MAE")),
